@@ -1,7 +1,7 @@
 pipeline {
-    agent { label 'k8s-server' }
+    agent any
     stages {
-        stage('Pull Code From GitHub') {
+        stage(' GitHub') {
             steps {
                 git 'https://github.com/vijay3639/Mazeball.git'
             }
