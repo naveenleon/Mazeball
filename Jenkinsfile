@@ -3,22 +3,14 @@ pipeline {
     stages {
         stage(' GitHub') {
             steps {
-                git 'https://github.com/vijay3639/Mazeball.git'
+                git 'https://github.com/naveenleon/Mazeball.git'
             }
         }
         stage('Build the Docker image') {
             steps {
-                sh 'sudo docker build -t mazeimage /home/vijay/workspace/game-project'
-                sh 'sudo docker tag mazeimage vijay3639/mazeimage:latest'
-                sh 'sudo docker tag mazeimage vijay3639/mazeimage:${BUILD_NUMBER}'
-            }
-        }
-        stage('Trivy Vulnerability Scan') {
-            steps {
-                script {
-                    sh 'sudo trivy image vijay3639/mazeimage:latest'
-                    sh 'sudo trivy image vijay3639/mazeimage:${BUILD_NUMBER}'
-                }
+                sh 'sudo docker build -t naveenleon/home/vijay/workspace/game-project'
+                sh 'sudo docker tag naveenleon /mazeimage:latest'
+                sh 'sudo docker tag naveenleon vijay3639/mazeimage:${BUILD_NUMBER}'
             }
         }
         stage('Push the Docker image') {
