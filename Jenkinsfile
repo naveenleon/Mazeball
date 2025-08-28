@@ -13,6 +13,14 @@ pipeline {
                 sh 'sudo docker tag naveenleon vijay3639/mazeimage:${BUILD_NUMBER}'
             }
         }
+                stage('Trivy Vulnerability Scan') {
+            steps {
+                script {
+                    sh 'sudo trivy image vijay3639/mazeimage:latest'
+                    sh 'sudo trivy image vijay3639/mazeimage:${BUILD_NUMBER}'
+                }
+            }
+        }
         stage('Push the Docker image') {
             steps {
                 sh 'sudo docker image push vijay3639/mazeimage:latest'
