@@ -27,7 +27,7 @@ pipeline {
                 sh 'sudo docker image push vijay3639/mazeimage:${BUILD_NUMBER}'
             }
         }
-        stage('Deploy on Kubernetes') {
+        stage('Deploy on docker') {
             steps {
                 sh 'sudo kubectl apply -f /home/vijay/workspace/game-project/pod.yml'
                 sh 'sudo kubectl rollout restart deployment loadbalancer-pod'
